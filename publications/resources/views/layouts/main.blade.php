@@ -10,7 +10,7 @@
     <style type="text/tailwindcss">
     @layer components {
         .heading {
-            @apply bg-lavender-pink text-drab-dark-brown text-center;
+            @apply bg-cornsilk text-rich-black text-center;
         }
     }
     </style>
@@ -21,11 +21,11 @@
       theme: {
         extend: {
           colors: {
-            'sunset': '#FFD791',
-            'french-gray': '#9199B6',
-            'lavender-pink': '#FFC4EB',
-            'drab-dark-brown': '#413620',
-            'burnt-sienna': '#EC7357',
+            'rich-black': '#0C1618',
+            'bunswick-green': '#004643',
+            'cornsilk': '#faf4d3',
+            'gold': '#D1AC00',
+            'peach': '#F6BE9A',
           }
         }
       }
@@ -33,13 +33,22 @@
   </script>
 </head>
 
-<body class="dark text-3xl text-drab-dark-brown dark:text-white font-bold bg-burnt-sienna dark:bg-slate-900 text-transform: uppercase">
-    <ul>
-        <li><i class="ri-information-fill"></i><a href="{{route('aboutUs')}}">About Us</a></li>
-        <li><i class="ri-home-fill"></i><a href="{{route('home')}}">Home</a></li>
-        <li><i class="ri-book-open-fill"></i><a href="{{route('quote-list')}}">Publications</a></li>
+<body>
+  <div class="flex">
+  <div class="w-1/4 h-screen bg-bunswick-green text-gold px-5 text-2xl">
+    <ul class="">
+        <li class="hover:bg-rich-black"><i class="ri-information-fill"></i><a href="{{route('aboutUs')}}">About Us</a></li>
+        <li class="hover:bg-rich-black"><i class="ri-home-fill"></i><a href="{{route('home')}}">Home</a></li>
+        <li class="hover:bg-rich-black"><i class="ri-book-open-fill"></i><a href="{{route('quote-list')}}">Publications</a></li>
     </ul>
+    </div>
+    <div class="w-3/4 h-screen bg-peach">
     @yield('content')
+    </div>
+    </div>
+    <footer class = "w-screen bg-rich-black text-gold h-12">
+      2023, Amelia Staszczyk 3C
+    </footer>
 </body>
 
 </html>

@@ -1,8 +1,13 @@
-@props([
-    'quote',
-    'hero'
+@props ([
+    'title',
+    'content',
+    'author'
 ])
 
-<li>
-    {{ $quote }} ~ {{ $hero }}
-</li>
+<figure class='bg-cornsilk rounded-xl w-2/3 p-7'>
+    <p class="underline text-2xl">{{$title}}</p>
+    <p class="italic mb-8">{{$author}}</p>
+    <p>
+        {{$content}}
+    </p>
+</figure>

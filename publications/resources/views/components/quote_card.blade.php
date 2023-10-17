@@ -5,7 +5,7 @@
     'image'    
 ])
 
-<figure class='flex flex-row border-4 border-sunset rounded-xl bg-french-gray m-5'>
+<figure class='border-8 border-gold bg-cornsilk m-2 p-4'>
     <img src="{{$image}}" alt="author">
     <div>
         <blockquote>{{$quote}}</blockquote>

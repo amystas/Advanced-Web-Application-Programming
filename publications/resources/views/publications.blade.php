@@ -1,7 +1,10 @@
 @extends('layouts.main')
 
 @section('content')
-    @foreach ($quotes as $quote)
-        <x-publication quote='{{ $quote["quote"] }}' hero='{{ $quote["hero"] }}'></x-publication>
+    @foreach ($publications as $p)
+    <div class='mb-16'>
+        <x-publication author='{{ $p["author"] }}' content="{{$p->excerpt}}" title='{{$p["title"]}}'></x-publication>
+        <a href="{{route('show', ['id' => $loop->index])}}" class="font-bold">Read more</a>
+    </div>
     @endforeach
 @endsection

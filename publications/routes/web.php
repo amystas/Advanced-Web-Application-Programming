@@ -75,19 +75,23 @@ $quotes = [
     ],
 ];
 
-Route::get('/publications', function() use($quotes) {
-    return view('quotes', [
-        'quotes' => $quotes
-    ]);
+Route::get('/publications', function() use($publications) {
+   return view('publications', [
+       'publications' => $publications
+   ]);
 })->name('publications');
 
 Route::get('/quote/list', function () use ($quotes) {
     return view("quotes", ['quotes' => $quotes]);
 })->name('quote-list');
 
-Route::get('/quote/dd', function () use ($publication) {
+Route::get('/publications/dd', function () use ($publication) {
     return view("dd", ['publication' => $publication]);
 })->name('dd');
+
+Route::get('/publications/{id}', function ($id) use ($publications) {
+    return view("show", ['publication' => $publications[$id]]);
+})->name('show');
 
 
 
