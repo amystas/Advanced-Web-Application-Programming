@@ -10,23 +10,25 @@ $publication->title = 'Sensacja! Riot usunął popularną postać Yumi z gry Lea
 $publication->content = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus suscipit doloremque delectus sunt totam impedit eveniet quisquam amet est repudiandae, magni ipsum, itaque rerum similique. Odit veritatis laborum eaque maxime?';
 $publication->author = 'Jan Kowalski';
 
-$publications = [
-    new Publication([
-        'title' => 'Sensacja! Riot usunął popularną postać Yumi z gry League of Legends!',
-        'content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus suscipit doloremque delectus sunt totam impedit eveniet quisquam amet est repudiandae, magni ipsum, itaque rerum similique. Odit veritatis laborum eaque maxime?',
-        'author' => 'Jan Kowalski'
-    ]),
-    new Publication([
-        'title' => 'Twitch.tv - Izak publicznie oznajmił, że kończy karierę streamera...',
-        'content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed est neque eum iure accusamus qui praesentium quae sapiente sint! Voluptas dicta alias beatae cupiditate! Tenetur alias quae voluptatibus est expedita.',
-        'author' => 'Zdzich Januszewski'
-    ]),
-    new Publication([
-        'title' => 'Steam bankrutuje - czyżby to koniec naszej ulubionej platformy gamingowej?',
-        'content' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et eos quaerat, dolor maiores ipsum accusantium. Laboriosam non maiores nesciunt obcaecati neque esse dolore! Ipsam enim labore quis, consequuntur omnis mollitia.',
-        'author' => 'Tadeusz Moniuszko'
-    ])
-];
+// $publications = [
+//     new Publication([
+//         'title' => 'Sensacja! Riot usunął popularną postać Yumi z gry League of Legends!',
+//         'content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus suscipit doloremque delectus sunt totam impedit eveniet quisquam amet est repudiandae, magni ipsum, itaque rerum similique. Odit veritatis laborum eaque maxime?',
+//         'author' => 'Jan Kowalski'
+//     ]),
+//     new Publication([
+//         'title' => 'Twitch.tv - Izak publicznie oznajmił, że kończy karierę streamera...',
+//         'content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed est neque eum iure accusamus qui praesentium quae sapiente sint! Voluptas dicta alias beatae cupiditate! Tenetur alias quae voluptatibus est expedita.',
+//         'author' => 'Zdzich Januszewski'
+//     ]),
+//     new Publication([
+//         'title' => 'Steam bankrutuje - czyżby to koniec naszej ulubionej platformy gamingowej?',
+//         'content' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et eos quaerat, dolor maiores ipsum accusantium. Laboriosam non maiores nesciunt obcaecati neque esse dolore! Ipsam enim labore quis, consequuntur omnis mollitia.',
+//         'author' => 'Tadeusz Moniuszko'
+//     ])
+// ];
+
+$publications = Publication::all();
 
 Route::get('/', function () {
     return view('home', [
