@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 
 use App\Models\Publication;
 
+use App\Http\Controllers\PublicationController;
+use App\Http\Controllers\SiteController;
+use Illuminate\Support\Facades\DB;
+
 $publication = new Publication();
 
 $publication->title = 'Sensacja! Riot usunął popularną postać Yumi z gry League of Legends!';
@@ -28,21 +32,12 @@ $publication->author = 'Jan Kowalski';
 //     ])
 // ];
 
-$publications = Publication::all();
+//$publications = Publication::all();
 
-Route::get('/', function () {
-    return view('home', [
-        'date' => now(),
-    ]);
-})->name('home');
+$publications = Publication::orderBy('created_at', 'desc')->get();
 
-Route::get('/about-us', function () {
-    return view("about_us");
-})->name('aboutUs');
-
-Route::get('/publications', function () {
-    return view("publications");
-})->name('publications');
+Route::get('about_us', [SiteController::class, 'about'])->name('aboutUs');
+Route::get('home', [SiteController::class, 'home'])->name('home');
 
 $quotes = [
     1 => [
@@ -77,11 +72,7 @@ $quotes = [
     ],
 ];
 
-Route::get('/publications', function() use($publications) {
-   return view('publications', [
-       'publications' => $publications
-   ]);
-})->name('publications');
+Route::get('publications', [PublicationController::class, 'index'])->name('publications.index');
 
 Route::get('/quote/list', function () use ($quotes) {
     return view("quotes", ['quotes' => $quotes]);
@@ -91,9 +82,7 @@ Route::get('/publications/dd', function () use ($publication) {
     return view("dd", ['publication' => $publication]);
 })->name('dd');
 
-Route::get('/publications/{id}', function ($id) use ($publications) {
-    return view("show", ['publication' => $publications[$id]]);
-})->name('show');
+Route::get('publication/{publication}', [PublicationController::class, 'show'])->name('publication.show')->whereNumber('publication');
 
 
 
