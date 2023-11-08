@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 use App\Models\Publication;
 
 use App\Http\Controllers\PublicationController;
@@ -73,6 +74,7 @@ $quotes = [
 ];
 
 Route::get('publications', [PublicationController::class, 'index'])->name('publications.index');
+Route::get('/', [SiteController::class, 'home'])->name('home');
 
 Route::get('/quote/list', function () use ($quotes) {
     return view("quotes", ['quotes' => $quotes]);
