@@ -4,16 +4,18 @@ use Illuminate\Support\Facades\Route;
 
 
 use App\Models\Publication;
+use App\Models\User;
 
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\DB;
 
 $publication = new Publication();
 
 $publication->title = 'Sensacja! Riot usunął popularną postać Yumi z gry League of Legends!';
 $publication->content = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus suscipit doloremque delectus sunt totam impedit eveniet quisquam amet est repudiandae, magni ipsum, itaque rerum similique. Odit veritatis laborum eaque maxime?';
-$publication->author = 'Jan Kowalski';
+$publication->author_id = 7;
 
 // $publications = [
 //     new Publication([
@@ -83,6 +85,8 @@ Route::get('/quote/list', function () use ($quotes) {
 Route::get('/publications/dd', function () use ($publication) {
     return view("dd", ['publication' => $publication]);
 })->name('dd');
+
+Route::get('users/{id}', [UserController::class, 'show'])->name('user.show');
 
 Route::get('publication/{publication}', [PublicationController::class, 'show'])->name('publication.show')->whereNumber('publication');
 
