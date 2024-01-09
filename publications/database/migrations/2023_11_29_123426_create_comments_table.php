@@ -11,12 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('publications', function (Blueprint $table) {
-            $table->dropColumn('author');
+        Schema::create('comments', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('author_id')
-	            ->after('content')
-	            ->references('id')
-	            ->on('users');
+            ->references('id')
+            ->on('users');
+            $table->foreignId('publication_id')
+            ->references('id')
+            ->on('publications');
+            $table->text('content');
+            $table->timestamps();
         });
     }
 
@@ -25,9 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('publications', function (Blueprint $table) {
-            $table->dropColumn('author_id');
-            $table->string('author');
-        });
+        Schema::dropIfExists('comments');
     }
 };

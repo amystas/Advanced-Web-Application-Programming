@@ -2,12 +2,12 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ config('app.name') }}</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <style type="text/tailwindcss">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{ config('app.name') }}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <style type="text/tailwindcss">
     @layer components {
         .heading {
             @apply bg-cornsilk text-rich-black text-center;
@@ -15,9 +15,9 @@
     }
     </style>
 
-    <script>
+  <script>
     tailwind.config = {
-    darkMode: 'class',
+      darkMode: 'class',
       theme: {
         extend: {
           colors: {
@@ -35,20 +35,21 @@
 
 <body>
   <div class="flex">
-  <div class="w-1/4 h-screen bg-bunswick-green text-gold px-5 text-2xl">
-    <ul class="">
+    <div class="w-1/4 h-screen bg-bunswick-green text-gold px-5 text-2xl">
+      <ul class="">
         <li class="hover:bg-rich-black"><i class="ri-information-fill"></i><a href="{{route('aboutUs')}}">About Us</a></li>
         <li class="hover:bg-rich-black"><i class="ri-home-fill"></i><a href="{{route('home')}}">Home</a></li>
         <li class="hover:bg-rich-black"><i class="ri-book-open-fill"></i><a href="{{route('quote-list')}}">Publications</a></li>
-    </ul>
+      </ul>
     </div>
     <div class="w-3/4 h-screen bg-peach">
-    @yield('content')
+      <x-alerts></x-alerts>
+      @yield('content')
     </div>
-    </div>
-    <footer class = "w-screen bg-rich-black text-gold h-12">
-      2023, Amelia Staszczyk 3C
-    </footer>
+  </div>
+  <footer class="w-screen bg-rich-black text-gold h-12">
+    2023, Amelia Staszczyk 3C
+  </footer>
 </body>
 
 </html>

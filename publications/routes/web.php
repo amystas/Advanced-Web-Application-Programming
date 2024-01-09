@@ -90,6 +90,18 @@ Route::get('users/{id}', [UserController::class, 'show'])->name('user.show');
 
 Route::get('publication/{publication}', [PublicationController::class, 'show'])->name('publication.show')->whereNumber('publication');
 
+Route::get('publication/create', [PublicationController::class, 'create'])->name('publication.create');
 
+Route::get('post/{publication}/edit', [PublicationController::class, 'edit'])->name('publication.edit');
+
+Route::put('post/{publication}', [PublicationController::class, 'update'])->name('publication.update');
+
+Route::post('publication/store', [PublicationController::class, 'store'])->name('publication.store');
+
+Route::delete('publication/{publication}', [PublicationController::class, 'destroy'])->name('publications.destroy');
+
+Route::get('sign-up-form', [UserController::class, "form"])->name('user.form');
+
+Route::post('register', [UserController::class, 'register'])->name("user.register");
 
 

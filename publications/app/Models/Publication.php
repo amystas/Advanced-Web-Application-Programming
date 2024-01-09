@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Publication extends Model
 {
@@ -25,7 +25,12 @@ class Publication extends Model
 
     public function author(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'author_id');
+        return $this->belongsTo(User::class, 'author_id')->withTrashed();
+    }
+
+    public function comment(): HasMany
+    {
+        return $this->hasMany(Comment::class, 'publication_id');
     }
 
     public function excerpt(): Attribute

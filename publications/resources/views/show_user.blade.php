@@ -12,7 +12,8 @@
 <figure class='border-8 border-gold bg-cornsilk m-2 p-4'>
     <h1>Articles by {{$user->name}}:</h1>
     @foreach ($publications as $p)
-        <x-publication author='{{ $p->author->name }}' content="{{$p->excerpt}}" title='{{$p["title"]}}' time='{{$p["time"]}}'></x-publication>
+        <x-publication author='{{ $p->author->name }}' content="{{$p->excerpt}}" title='{{$p["title"]}}' time='{{$p["time"]}}' isdeleted="$p['isdeleted']"></x-publication>
+        <a href="{{route('publication.show', ['publication' => $loop->iteration])}}" class="font-bold">Read more</a>
     @endforeach
 </figure>
 @endsection
