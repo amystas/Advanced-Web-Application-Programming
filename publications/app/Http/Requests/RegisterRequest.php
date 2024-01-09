@@ -36,7 +36,6 @@ class RegisterRequest extends FormRequest
             "password.min"=> "You want to get hacked, don't you",
             'name.required'=> 'Wft I bet you have a name, mate',
             'name.string' => "You Elon Musk's son or what",
-            'name.between' => '',
             'email.required'=> "Wft I bet you have an email mate, it's 21st century",
             "email.email"=> "You were supposed to enter your email",
             "email.max"=> "Wtf you got some russian temp mail?",
