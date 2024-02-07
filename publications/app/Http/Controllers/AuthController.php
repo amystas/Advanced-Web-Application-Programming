@@ -18,7 +18,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials, $request->boolean('remember_me'))) {
             $request->session()->regenerate();
 
-            return redirect()->intended('home')
+            return redirect()->intended('home');
         }
         return back()->withErrors([
             'password' => 'Email lub hasło nie są poprawne.'
