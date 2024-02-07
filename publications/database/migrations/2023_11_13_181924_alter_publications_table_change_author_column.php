@@ -23,11 +23,11 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
-    {
-        Schema::table('publications', function (Blueprint $table) {
-            $table->dropColumn('author_id');
-            $table->string('author');
-        });
-    }
+    // public function down(): void
+    // {
+    //     Schema::table('publications', function (Blueprint $table) {
+    //         $table->dropColumn('author_id');
+    //         $table->string('author');
+    //     });
+    // }
 };

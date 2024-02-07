@@ -40,9 +40,19 @@
         <li class="hover:bg-rich-black"><i class="ri-information-fill"></i><a href="{{route('aboutUs')}}">About Us</a></li>
         <li class="hover:bg-rich-black"><i class="ri-home-fill"></i><a href="{{route('home')}}">Home</a></li>
         <li class="hover:bg-rich-black"><i class="ri-book-open-fill"></i><a href="{{route('quote-list')}}">Publications</a></li>
+        @auth
+	      <h1>Witaj <strong>{{ Auth::user()->name }}</strong>!</h1>
+        <form method="post" action="{{ route('user.logout') }}">
+          @csrf
+          <p class="hover:bg-rich-black"><i class="ri-logout-box-fill"></i><button type="submit">Logout</button></p>
+        </form>
+        @else
+        <li class="hover:bg-rich-black"><i class="ri-user-received-fill"></i><a href="{{route('loginform')}}">Log in</a></li>
+        <li class="hover:bg-rich-black"><i class="ri-user-add-fill"></i><a href="{{route('user.form')}}">Sign up</a></li>
+        @endauth
       </ul>
     </div>
-    <div class="w-3/4 h-screen bg-peach">
+    <div class="w-3/4 h-screen bg-peach overflow-scroll">
       <x-alerts></x-alerts>
       @yield('content')
     </div>

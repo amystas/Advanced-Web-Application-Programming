@@ -57,6 +57,7 @@ class DatabaseSeeder extends Seeder
         Comment::create([
                 'author_id' => $commentAuthor->id,
                 'publication_id' => 1,
+                'answer_to' => 1,
                 'content' => "so many languages and man chose to speak FACTS"
         ]);
         Publication::create([

@@ -19,9 +19,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Comment extends Model
 {
-
+    protected $fillable = ['author_id', 'publication_id', 'content'];
     public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'author_id');
+    }
+
+    public function answer(): BelongsTo
+    {
+        return $this->belongsTo(Comment::class, 'answer_to');
     }
 }

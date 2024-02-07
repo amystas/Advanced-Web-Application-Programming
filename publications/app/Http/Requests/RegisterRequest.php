@@ -25,7 +25,8 @@ class RegisterRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'between:3,20'],
             'email' => ['required', 'string', 'email', 'max:40', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed']
+            //'password' => ['required', 'string', 'min:8', 'confirmed']
+            'password' => [Password::min(6)->numbers()->mixedCase()]
         ];
     }
     public function messages(): array

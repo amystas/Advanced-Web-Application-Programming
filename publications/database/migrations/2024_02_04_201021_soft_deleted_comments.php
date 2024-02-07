@@ -11,8 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::dropIfExists('deleted_at');
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('comments', function (Blueprint $table) {
             $table->softDeletes();
         });
     }
@@ -22,6 +21,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('deleted_at');
+        //
     }
 };

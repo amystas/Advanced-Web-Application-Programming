@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommentControler;
 use Illuminate\Support\Facades\Route;
 
 
@@ -37,7 +39,7 @@ $publication->author_id = 7;
 
 //$publications = Publication::all();
 
-$publications = Publication::orderBy('created_at', 'desc')->get();
+//$publications = Publication::orderBy('created_at', 'desc')->get();
 
 Route::get('about_us', [SiteController::class, 'about'])->name('aboutUs');
 Route::get('home', [SiteController::class, 'home'])->name('home');
@@ -90,7 +92,7 @@ Route::get('users/{id}', [UserController::class, 'show'])->name('user.show');
 
 Route::get('publication/{publication}', [PublicationController::class, 'show'])->name('publication.show')->whereNumber('publication');
 
-Route::get('publication/create', [PublicationController::class, 'create'])->name('publication.create');
+Route::get('publication/create', [PublicationController::class, 'create'])->name('publication.create')->middleware('auth');
 
 Route::get('post/{publication}/edit', [PublicationController::class, 'edit'])->name('publication.edit');
 
@@ -104,4 +106,10 @@ Route::get('sign-up-form', [UserController::class, "form"])->name('user.form');
 
 Route::post('register', [UserController::class, 'register'])->name("user.register");
 
+Route::get('login-form', [AuthController::class, 'form'])->name("loginform");
 
+Route::post('login', [AuthController::class, 'login'])->name("user.login");
+
+Route::post('logout', [AuthController::class, 'logout'])->name("user.logout");
+
+Route::post("publication/{publication}/add-comment", [CommentControler::class, 'store'])->name("comment.store");
