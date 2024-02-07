@@ -18,4 +18,10 @@ class CommentControler extends Controller
         ]);
         return redirect()->route('publication.show', ['publication' => $publication])->with('success', 'Komentarz dodany!');
     }
+
+    public function destroy(Comment $comment)
+    {
+        $comment->delete();
+        return redirect()->back()->with('success','Komentarz usunięto');
+    }
 }

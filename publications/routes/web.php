@@ -113,3 +113,5 @@ Route::post('login', [AuthController::class, 'login'])->name("user.login");
 Route::post('logout', [AuthController::class, 'logout'])->name("user.logout");
 
 Route::post("publication/{publication}/add-comment", [CommentControler::class, 'store'])->name("comment.store");
+
+Route::delete('delete-comment/{comment}', [CommentControler::class, 'destroy'])->name('comment.destroy');
