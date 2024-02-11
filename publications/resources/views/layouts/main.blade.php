@@ -39,8 +39,9 @@
       <ul class="">
         <li class="hover:bg-rich-black"><i class="ri-information-fill"></i><a href="{{route('aboutUs')}}">About Us</a></li>
         <li class="hover:bg-rich-black"><i class="ri-home-fill"></i><a href="{{route('home')}}">Home</a></li>
-        <li class="hover:bg-rich-black"><i class="ri-book-open-fill"></i><a href="{{route('quote-list')}}">Publications</a></li>
+        <li class="hover:bg-rich-black"><i class="ri-book-open-fill"></i><a href="{{route('publications.index')}}">Publications</a></li>
         @auth
+        <li class="hover:bg-rich-black"><i class="ri-add-box-fill"></i><a href="{{route('publication.create')}}">Create a new publication</a></li>
 	      <h1>Witaj <strong>{{ Auth::user()->name }}</strong>!</h1>
         <form method="post" action="{{ route('user.logout') }}">
           @csrf

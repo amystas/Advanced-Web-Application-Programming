@@ -12,6 +12,7 @@ use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 $publication = new Publication();
 
@@ -94,9 +95,9 @@ Route::get('publication/{publication}', [PublicationController::class, 'show'])-
 
 Route::get('publication/create', [PublicationController::class, 'create'])->name('publication.create')->middleware('auth');
 
-Route::get('post/{publication}/edit', [PublicationController::class, 'edit'])->name('publication.edit');
+Route::get('publication/{publication}/edit', [PublicationController::class, 'edit'])->name('publication.edit');
 
-Route::put('post/{publication}', [PublicationController::class, 'update'])->name('publication.update');
+Route::put('publication/{publication}', [PublicationController::class, 'update'])->name('publication.update');
 
 Route::post('publication/store', [PublicationController::class, 'store'])->name('publication.store');
 
@@ -115,3 +116,11 @@ Route::post('logout', [AuthController::class, 'logout'])->name("user.logout");
 Route::post("publication/{publication}/add-comment", [CommentControler::class, 'store'])->name("comment.store");
 
 Route::delete('delete-comment/{comment}', [CommentControler::class, 'destroy'])->name('comment.destroy');
+
+Route::get('admin', function () {
+    if (Gate::denies('admin-access')) {
+        abort(403);
+    }
+
+    echo 'Panel administratora';
+})->name('admin-panel');

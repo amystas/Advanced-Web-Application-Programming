@@ -22,7 +22,10 @@
     @endforeach
 </div>
 
-<div class="absolute top-80 right-3 break-words w-80 bg-cornsilk rounded-xl p-7 h-24 mt-10">
+@if(auth()->user() !== null)
+@if(auth()->user()->id == $publication->author->id)
+
+<div class="absolute top-72 right-3 break-words w-80 bg-cornsilk rounded-xl p-7 h-24 mt-10">
 
     <form action="{{ route('publications.destroy', ['publication' => $publication->id]) }}" method="POST">
         @csrf
@@ -31,6 +34,9 @@
     </form>
     <a href="{{ route('publication.edit', ['publication' => $publication->id]) }}">Edit</a>
 </div>
+
+@endif
+@endif
 
 @if(Auth::check())
 <form action="{{ route('comment.store', ['publication' => $publication->id]) }}" method="POST"
